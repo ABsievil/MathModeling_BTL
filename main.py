@@ -1,4 +1,4 @@
-//print
+//now
 print("Vu here!");
 
 //haahhaha
