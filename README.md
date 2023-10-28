@@ -6,7 +6,7 @@ branch master is the place of storage for official submition
 branch dev is the place of temporary storage for all child branch 
 
 *The law of using branches:
-your branch = first name : you can working on it
+your branch = first name : you can work on it
 
 branch dev : is the father of your branch, is where you merge your branch with this branch
 
