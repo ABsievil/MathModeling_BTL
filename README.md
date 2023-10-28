@@ -14,3 +14,4 @@ branch master: you cannot push code on this branch, the owner will merge branch 
 
 instruction git and github: you can refer to git.txt
 
+// i is readed at 10.17
