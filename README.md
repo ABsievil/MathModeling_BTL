@@ -2,6 +2,7 @@ README.md file is where we will note instruction and explain our code
 ----------------------------------------------------------------------
 *Information of the branches in the project:
 branch master is the place of storage for official submition
+
 branch dev is the place of temporary storage for all child branch 
 
 *The law of using branches:
