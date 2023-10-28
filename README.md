@@ -1,4 +1,4 @@
-# MathModeling_BTL
+# MathModeling_BTL  // need to adjust
 code assigment for Semester 231
 
 **using instruction git and github:
