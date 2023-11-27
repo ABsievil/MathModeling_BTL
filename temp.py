@@ -111,9 +111,9 @@ model.solve()
 
 # Print the results
 print("Objective Function Value:  ", round(of.toValue(), 4), "\n")
-print("x:  ", round(x.toValue(), 4))
-print("y:  ", round(y.toValue(), 4))
-print("z:  ", round(z.toValue(), 4))
+print("x:  ", round(x_var.toValue(), 4))
+print("y:  ", round(y_var.toValue(), 4))
+print("z:  ", round(z_var.toValue(), 4))
 
 
 

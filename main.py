@@ -9,13 +9,13 @@ m = 5
 S = 2
 ps = 1/2
 MAX_VALUE = 100
-c = np.random.randint(0, MAX_VALUE + 1, m)
-l = np.random.randint(0, MAX_VALUE + 1, n)
-q = np.random.randint(0, MAX_VALUE + 1, n)
-s = np.random.randint(0, MAX_VALUE + 1, m)
-A = np.random.randint(0, MAX_VALUE + 1, size=(n, m))
+c = np.random.uniform(100, 500, m)
+l = np.random.uniform(10, 50, n)
+q = np.random.uniform(100, 500, n)
+s = np.random.uniform(10, 50, m)
+A = np.random.uniform(0, 100 + 1, size=(n, m))
 D = np.random.binomial(10, 0.5, n)
-D[D < 0] = 0
+D[D <= 0] = 0
 """
 D = [np.random.binomial(10, 0.5, n) for _ in range(S)]
 D = [np.clip(arr, a_min=0, a_max=None) for arr in D]
@@ -49,38 +49,41 @@ D_set = Set(container, name = "D_set", records= D)
 
 A_tranpose = A.T
 A_list = A_tranpose.tolist()
-A_row = [A_list[i] for i in range(m)]
+A_col = []
+for j in range(n):
+    col_data = [A_list[i][j] for i in range(m)]
+    A_col.append(col_data)
 A_set = []
-for i in range(m):
-    A_set.append( Set(container, name = f"A_set{i}", records= A_row[i])  ) 
+for i in range(n):
+    A_set.append( Set(container, name = f"A_set{i}", records= A_col[i]) ) 
 
 # Define parameters
-c_param = Parameter(container, "c", domain=c_set)
-l_sub_q_param = Parameter(container, "l", domain=l_sub_q_set)
+c_param = Parameter(container, "c_param", domain=c_set)
+l_sub_q_param = Parameter(container, "l_sub_q_param", domain=l_sub_q_set)
 """
 l_param = Parameter(container, "l", domain=l_set)
 q_param = Parameter(container, "q", domain=q_set)
 """
-s_param = Parameter(container, "s", domain=s_set)
-D_param = Parameter(container, "D", domain=D_set)
-A_param  = Parameter(container, "A", domain = [A_set[0], A_set[1], A_set[2], A_set[3], A_set[4], A_set[5], A_set[6]], records= A_list)
+s_param = Parameter(container, "s_param", domain=s_set)
+D_param = Parameter(container, "D_param", domain=D_set)
+A_param  = Parameter(container, "A_param", domain = [A_set[0], A_set[1], A_set[2], A_set[3], A_set[4], A_set[5], A_set[6]], records= A_list)
 
 # Define variables
 x_var = Variable(container, name= "x")
 y_var = Variable(container, name= "y")
 z_var = Variable(container, name= "z")
-of = Variable(container, name="ofjective")
+of = Variable(container, name="objective")
 
 # Define equations for variables
 x_contrain = Equation(container, "x_contrain", type="regular")
 y_contrain = Equation(container, "y_contrain", type="regular")
 z_contrain = Equation(container, "z_contrain", type="regular")
 of_contrain = Equation(container, "objective_contrain", type="regular")
+
 x_contrain[...] =  x_var >= 0
 y_contrain[...] =  (y_var == x_var - np.dot(A_param, z_var)) & (y_var >= 0)
 z_contrain[...] =  0 <= z_var <= D_param
 of_contrain[...] = of == np.dot(c_param, x_var) + np.dot(l_sub_q_param, z_var) - np.dot(s_param, y_var)
-
 
 # Solve the model with parameters
 model = Model(
