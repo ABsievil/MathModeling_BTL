@@ -1,0 +1,215 @@
+class Set(
+    container: Container,
+    name: str,
+    domain: List[Set | str] | None = None,
+    is_singleton: bool = False,
+    records: Any | None = None,
+    domain_forwarding: bool = False,
+    description: str = "",
+    uels_on_axes: bool = False
+)
+
+class Parameter(
+    container: Container,
+    name: str,
+    domain: List[str | Set] | None = None,
+    records: Any | None = None,
+    domain_forwarding: bool = False,
+    description: str = "",
+    uels_on_axes: bool = False
+)
+
+class Variable(
+    container: Container,
+    name: str,
+    type: str = "free",
+    domain: List[str | Set] | None = None,
+    records: Any | None = None,
+    domain_forwarding: bool = False,
+    description: str = "",
+    uels_on_axes: bool = False
+)
+
+class Equation(
+    container: Container,
+    name: str,
+    type: str | EquationType = "regular",
+    domain: List[Set | str] | None = None,
+    definition: Variable | Operation | Expression | None = None,
+    records: Any | None = None,
+    domain_forwarding: bool = False,
+    description: str = "",
+    uels_on_axes: bool = False,
+    definition_domain: list | None = None
+)
+
+class Model(
+    container: Container,
+    name: str,
+    problem: str,
+    equations: List[Equation] = [],
+    sense: Literal['MIN', 'MAX', 'FEASIBILITY'] | None = None,
+    objective: Variable | Expression | None = None,
+    matches: dict | None = None,
+    limited_variables: Iterable[Variable] | None = None
+)
+
+Class Set:
+    Thuộc tính:
+    container: Tham chiếu đến đối tượng chứa (có thể là Container).
+    name: Chuỗi đại diện cho tên của set.
+    domain: Danh sách các set hoặc chuỗi đại diện cho miền giá trị của set. 
+            Nó chỉ định các phần tử có thể thuộc về set này.
+    is_singleton: Giá trị boolean cho biết liệu set có phải là set đơn hay không.
+    records: Bất kỳ bản ghi bổ sung nào liên quan đến set.
+    domain_forwarding: Giá trị boolean cho biết liệu miền giá trị có được chuyển tiếp hay không.
+    description: Chuỗi mô tả về set.
+    uels_on_axes: Giá trị boolean cho biết liệu nhãn phần tử duy nhất (UELs) có được áp dụng cho các trục hay không.
+
+Class Parameter:
+    Thuộc tính:
+    container: Tham chiếu đến đối tượng chứa (có thể là Container).
+    name: Chuỗi đại diện cho tên của parameter.
+    domain: Danh sách các set hoặc chuỗi đại diện cho miền giá trị của parameter.
+    records: Bất kỳ bản ghi bổ sung nào liên quan đến parameter.
+    domain_forwarding: Giá trị boolean cho biết liệu miền giá trị có được chuyển tiếp hay không.
+    description: Chuỗi mô tả về parameter.
+    uels_on_axes: Giá trị boolean cho biết liệu nhãn phần tử duy nhất (UELs) có được áp dụng cho các trục hay không.
+
+Class Variable:
+    Thuộc tính:
+    container: Tham chiếu đến đối tượng chứa (có thể là Container).
+    name: Chuỗi đại diện cho tên của biến.
+    type: Chuỗi đại diện cho loại của biến (mặc định là "free").
+    domain: Danh sách các set hoặc chuỗi đại diện cho miền giá trị của biến.
+    records: Bất kỳ bản ghi bổ sung nào liên quan đến biến.
+    domain_forwarding: Giá trị boolean cho biết liệu miền giá trị có được chuyển tiếp hay không.
+    description: Chuỗi mô tả về biến.
+    uels_on_axes: Giá trị boolean cho biết liệu nhãn phần tử duy nhất (UELs) có được áp dụng cho các trục hay không.
+
+Class Equation:
+    Thuộc tính:
+    container: Tham chiếu đến đối tượng chứa (có thể là Container).
+    name: Chuỗi đại diện cho tên của phương trình.
+    type: Chuỗi hoặc EquationType đại diện cho loại của phương trình (mặc định là "regular").
+    domain: Danh sách các set hoặc chuỗi đại diện cho miền giá trị của phương trình.
+    definition: Đối tượng đại diện cho định nghĩa của phương trình (ví dụ: Variable, Operation, Expression).
+    records: Bất kỳ bản ghi bổ sung nào liên quan đến phương trình.
+    domain_forwarding: Giá trị boolean cho biết liệu miền giá trị có được chuyển tiếp hay không.
+    description: Chuỗi mô tả về phương trình.
+    uels_on_axes: Giá trị boolean cho biết liệu nhãn phần tử duy nhất (UELs) có được áp dụng cho các trục hay không.
+    definition_domain: Danh sách đại diện cho miền giá trị của định nghĩa của phương trình.
+
+Class Model:
+    Thuộc tính:
+    container: Tham chiếu đến đối tượng chứa (có thể là Container).
+    name: Chuỗi đại diện cho tên của mô hình.
+    problem: Chuỗi đại diện cho loại của vấn đề tối ưu hóa (ví dụ: "MIN", "MAX", "FEASIBILITY").
+    equations: Danh sách các đối tượng Equation đại diện cho các phương trình trong mô hình.
+    sense: Chuỗi chỉ định hướng tối ưu hóa ("MIN", "MAX", "FEASIBILITY").
+    objective: Đối tượng đại diện cho mục tiêu của mô hình (ví dụ: Variable, Expression).
+    matches: Từ điển đại diện cho các kết quả khớp.
+    limited_variables: Dãy các đối tượng Variable đại diện cho các biến bị hạn chế.
+
+
+Class Container:
+    Đây là một đối tượng chứa (container) cho các thành phần khác nhau của mô hình, 
+    chẳng hạn như các Set, Parameter, Variable, và Equation. Nó giúp tổ chức và quản lý các thành phần của mô hình.
+
+Class Set:
+    Mô tả một tập hợp (set) trong mô hình toán học. Trong trường hợp này, bạn đang 
+    sử dụng Set để định nghĩa các tập hợp i_set và j_set, đại diện cho các chỉ số i và j trong mô hình.
+
+Class Parameter:
+    Mô tả một tham số trong mô hình. Trong trường hợp này, bạn đang sử dụng Parameter 
+    để định nghĩa các tham số b_param, l_param, q_param, s_param, A_param, và D_param, 
+    các giá trị của chúng được lấy từ các mảng NumPy tương ứng.
+
+Class Variable:
+    Mô tả một biến trong mô hình. Trong trường hợp này, bạn đang sử dụng Variable để 
+    định nghĩa các biến x_var, y_var, và z_var với miền giá trị là "positive" hoặc "binary".
+
+Class Equation:
+    Mô tả một phương trình trong mô hình. Trong trường hợp này, bạn đang sử dụng Equation 
+    để định nghĩa các phương trình obj_equation, demand_constraint, và production_constraint. 
+    Các phương trình này có định nghĩa phức tạp, sử dụng các biến và tham số đã được định nghĩa trước đó.
+
+Class Model:
+    Mô tả toàn bộ mô hình toán học. Trong trường hợp này, bạn đang sử dụng Model để tạo 
+    một mô hình với tên là "MyModel" và kiểu vấn đề là "MIN" (tối thiểu hóa). Mô hình này 
+    có các thành phần như tên, kiểu vấn đề, các phương trình, và các biến được định nghĩa trước đó.
+    Mã nguồn của bạn sử dụng thư viện gamspy để tạo và giải mô hình toán học. Sau khi giải 
+    mô hình, kết quả được truy xuất thông qua các đối tượng Variable và được in ra màn hình. 
+    Cuối cùng, mô hình được xuất ra file GAMS với tên "2SLPWR_Model.gms".
+
+
+    ===
+
+
+
+
+
+
+
+
+# Define the variables
+z = Variable("z", Set(n), lb=0, ub=1)
+y = Variable("y", Set(m), lb=0)
+
+# Define the objective function
+c = Parameter("c", Set(m))
+c.from_data([(i, l[i] - q[i]) for i in range(m)])
+Z = sum(c[i] * z[i] for i in range(n)) - sum(s[i] * y[i] for i in range(m))
+model.objective = Z
+
+# Define the constraints
+A = Parameter("A", Set(n, m))
+A.from_data([((i, j), A[i, j]) for i in range(n) for j in range(m)])
+model += y == x - A.T @ z
+model += z <= d
+
+# Solve the model
+solution = solve(model)
+
+# Print the results
+print("Optimal solution:")
+print("x =", solution["x"])
+print("y =", solution["y"])
+print("z =", solution["z"])
+
+10h:40 am
+
+
+# Define equations for object
+obj_equation = Equation(
+    container=container,
+    name="obj",
+    definition=sum(s[i] * x[i] + q[i] * y[i] + l[i] * z[i] for i in range(1, n+1))
+)
+
+demand_constraint = Equation(
+    container=container,
+    name="demand",
+    definition=(sum(A_param[i, j] * x[j] for j in range(1, m+1)) - D_param[i]) >= 0,
+    domain=[i_set for _ in range(1, n+1)]
+)
+
+production_constraint = Equation(
+    container=container,
+    name="production",
+    definition=sum(b_param[i] * x[i] + l_param[i] * y[i] + s_param[i] * z[i] == 1 for i in range(1, n+1)),
+    domain=[i_set for _ in range(1, n+1)]
+)
+
+
+
+# Get the results
+x_result = model.get_variable("x").get_values()
+y_result = model.get_variable("y").get_values()
+z_result = model.get_variable("z").get_values()
+print("Optimal values for x:")
+print(x_result)
+print("\nOptimal values for y:")
+print(y_result)
+print("\nOptimal values for z:")
+print(z_result)
