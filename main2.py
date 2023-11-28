@@ -1,7 +1,11 @@
 import numpy as np
 from gamspy import Model, Container, Set, Parameter, Variable, Equation
 
-# using index 
+"""
+* using index 
+4.11 28/11 : đã chỉnh x,y,z >=1 thì thấy hiện tượng trường value của x y z có biến đổi khá đẹp, nhưng Obj thì không
+hint: nên xem lại phạm vi random của các vector, matrix và contrain 
+"""
 
 # Set up the model
 n = 8
@@ -50,17 +54,17 @@ of_contrain = Equation(container, "objective_contrain", type="regular")
 
 # Define contrains for variables
 for i in range(m):
-    x_contrain[i][...] = x[i] >= 0                                  # x >=0 
+    x_contrain[i][...] = x[i] >= 1                                 # x >=0 
 
 for i in range(n):
-    z_contrain[i][...] = (0 <= z[i]) and (z[i] <= D_list[0][i])     # 0 <= z <= D
+    z_contrain[i][...] = (1 <= z[i]) and (z[i] <= D_list[0][i])     # 0 <= z <= D
     z2_contrain[i][...] = (z2[i] <= D_list[1][i])                   # 0 <= z2 <= D
 
 for j in range(m):
     sum_expr = sum(A[i][j] * z[i] for i in range(n))
-    y_contrain[j][...] =  (y[j] == x[j] - sum_expr) and (y[j] >=0)     # y= x - A.T * z && y >=0
+    y_contrain[j][...] =  (y[j] == x[j] - sum_expr) and (y[j] >=1)     # y= x - A.T * z && y >=0
     sum_expr2 = sum(A[i][j] * z2[i] for i in range(n))
-    y2_contrain[j][...] =  (y2[j] == x[j] - sum_expr) and (y2[j] >=0)  # y2= x - A.T * z2 && y2 >=0
+    y2_contrain[j][...] =  (y2[j] == x[j] - sum_expr) and (y2[j] >=1)  # y2= x - A.T * z2 && y2 >=0
 
 # Calulate for objection function value
 oneStage = sum(c[i] * x[i] for i in range(m))                      # c.T * x
@@ -78,7 +82,7 @@ model = Model(
     container,
     name="myModel",
     equations=container.getEquations(),
-    problem="MINLP",
+    problem="NLP",
     sense="MIN",
     objective=of,
 )
@@ -88,7 +92,9 @@ model.solve()
 print("Objective Function Value:  ", round(of.toValue(), 4), "\n")
 print("x:  ", [round(x[i].toValue(), 4) for i in range(m)])
 print("y:  ", [round(y[i].toValue(), 4) for i in range(m)])
+print("y2:  ", [round(y2[i].toValue(), 4) for i in range(m)])
 print("z:  ", [round(z[i].toValue(), 4) for i in range(n)])
+print("z2:  ", [round(z2[i].toValue(), 4) for i in range(n)])
 
 # Save the GAMS model
 #model.export("my_Model.gms")
