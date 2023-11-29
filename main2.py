@@ -1,5 +1,6 @@
 import numpy as np
-from gamspy import Model, Container, Set, Parameter, Variable, Equation
+from gamspy import Sum, Model, Container, Set, Parameter, Variable, Equation, Sense
+import sys
 
 """
 * using index 
@@ -50,11 +51,11 @@ y_contrain = [Equation(container, f"y_contrain{i}", type="regular") for i in ran
 z_contrain = [Equation(container, f"z_contrain{i}", type="regular") for i in range(n)]
 y2_contrain = [Equation(container, f"y2_contrain{i}", type="regular") for i in range(m)]
 z2_contrain = [Equation(container, f"z2_contrain{i}", type="regular") for i in range(n)]
-of_contrain = Equation(container, "objective_contrain", type="regular")
+#of_contrain = Equation(container, "objective_contrain", type="regular")
 
 # Define contrains for variables
 for i in range(m):
-    x_contrain[i][...] = x[i] >= 1                                 # x >=0 
+    x_contrain[i][...] = x[i] >= 1                                  # x >=0 
 
 for i in range(n):
     z_contrain[i][...] = (1 <= z[i]) and (z[i] <= D_list[0][i])     # 0 <= z <= D
@@ -67,15 +68,15 @@ for j in range(m):
     y2_contrain[j][...] =  (y2[j] == x[j] - sum_expr) and (y2[j] >=1)  # y2= x - A.T * z2 && y2 >=0
 
 # Calulate for objection function value
-oneStage = sum(c[i] * x[i] for i in range(m))                      # c.T * x
+oneStage = sum(c[i] * x[i] for i in range(m))                          # c.T * x
 
-twoStage_first1 = sum( ((l[i] - q[i])*z[i]) for i in range(n) )         #(l - q).T * z
-twoStage_second1 = sum(s[j] * y[j] for j in range(m))               # s.T * y
+twoStage_first1 = sum( ((l[i] - q[i])*z[i]) for i in range(n) )        #(l - q).T * z
+twoStage_second1 = sum(s[j] * y[j] for j in range(m))                  # s.T * y
 
 twoStage_first2 = sum( ((l[i] - q[i])*z2[i]) for i in range(n) )         #(l - q).T * z2
-two_Stage_second2 = sum(s[j] * y2[j] for j in range(m))               # s.T * y2
+twoStage_second2 = sum(s[j] * y2[j] for j in range(m))                 # s.T * y2
 
-of_contrain[...] = of ==  oneStage + ps*(twoStage_first1 - twoStage_second1) + ps*(twoStage_first2 - two_Stage_second2)
+of = oneStage + ps*(twoStage_first1 - twoStage_second1) + ps*(twoStage_first2 - twoStage_second2)
 
 # Solve the model with parameters
 model = Model(
@@ -86,10 +87,11 @@ model = Model(
     sense="MIN",
     objective=of,
 )
-model.solve()
+model.solve(output=sys.stdout) 
+#model.solve()
 
 # Print the results
-print("Objective Function Value:  ", round(of.toValue(), 4), "\n")
+print("Objective Function Value:  ", model.objective_value, "\n")
 print("x:  ", [round(x[i].toValue(), 4) for i in range(m)])
 print("y:  ", [round(y[i].toValue(), 4) for i in range(m)])
 print("y2:  ", [round(y2[i].toValue(), 4) for i in range(m)])
