@@ -1,4 +1,4 @@
---- Job _job_f4d90eca-aa60-431d-b27c-9c9f0385a696.gms Start 11/30/23 00:42:04 45.3.0 c4c31d8a WEX-WEI x86 64bit/MS Windows
+--- Job _job_598d1d7e-b95b-4244-aa6d-5747db53a13d.gms Start 11/30/23 01:00:00 45.3.0 c4c31d8a WEX-WEI x86 64bit/MS Windows
 --- Applying:
     C:\Users\Hii\AppData\Local\Programs\Python\Python311\Lib\site-packages\gamspy_base\gmsprmNT.txt
 --- GAMS Parameters defined
@@ -17,15 +17,15 @@
     MIQCP SBB
     RMIQCP CONOPT
     EMP CONVERT
-    Restart C:\Users\Hii\AppData\Local\Temp\tmpmzw4b0ee\_save_96d4f46d-d3d6-4d0a-8c4a-ce941b26cfb5.g00
-    Input C:\Users\Hii\AppData\Local\Temp\tmpmzw4b0ee\_job_f4d90eca-aa60-431d-b27c-9c9f0385a696.gms
-    Output C:\Users\Hii\AppData\Local\Temp\tmpmzw4b0ee\_job_f4d90eca-aa60-431d-b27c-9c9f0385a696.lst
-    Save C:\Users\Hii\AppData\Local\Temp\tmpmzw4b0ee\_restart_96d4f46d-d3d6-4d0a-8c4a-ce941b26cfb5.g00
-    ScrDir C:\Users\Hii\AppData\Local\Temp\tmpmzw4b0ee\225a\
+    Restart C:\Users\Hii\AppData\Local\Temp\tmplrjebrwa\_save_36acb2d0-c9f9-4ed9-bad7-4f7a265c0cd7.g00
+    Input C:\Users\Hii\AppData\Local\Temp\tmplrjebrwa\_job_598d1d7e-b95b-4244-aa6d-5747db53a13d.gms
+    Output C:\Users\Hii\AppData\Local\Temp\tmplrjebrwa\_job_598d1d7e-b95b-4244-aa6d-5747db53a13d.lst
+    Save C:\Users\Hii\AppData\Local\Temp\tmplrjebrwa\_restart_36acb2d0-c9f9-4ed9-bad7-4f7a265c0cd7.g00
+    ScrDir C:\Users\Hii\AppData\Local\Temp\tmplrjebrwa\225a\
     SysDir C:\Users\Hii\AppData\Local\Programs\Python\Python311\Lib\site-packages\gamspy_base\
-    CurDir C:\Users\Hii\AppData\Local\Temp\tmpmzw4b0ee\
+    CurDir C:\Users\Hii\AppData\Local\Temp\tmplrjebrwa\
     LogOption 3
-    LogFile C:\Users\Hii\AppData\Local\Temp\tmpmzw4b0ee\_job_f4d90eca-aa60-431d-b27c-9c9f0385a696.log
+    LogFile C:\Users\Hii\AppData\Local\Temp\tmplrjebrwa\_job_598d1d7e-b95b-4244-aa6d-5747db53a13d.log
 Licensee: GAMS Demo, for EULA and demo limitations see   G230930/0001CB-GEN
           https://www.gams.com/latest/docs/UG%5FLicense.html         DC0000
           C:\Users\Hii\AppData\Local\Programs\Python\Python311\Lib\site-packages\gamspy_base\gamslice.txt
@@ -34,19 +34,19 @@ Processor information: 1 socket(s), 2 core(s), and 4 thread(s) available
 GAMS 45.3.0   Copyright (C) 1987-2023 GAMS Development. All rights reserved
 --- Starting continued compilation
 --- Workfile was generated under GAMS version WEX453-453
---- _job_f4d90eca-aa60-431d-b27c-9c9f0385a696.gms(3) 3 Mb
---- GDXin=C:\Users\Hii\AppData\Local\Temp\tmpmzw4b0ee\_gdx_in_96d4f46d-d3d6-4d0a-8c4a-ce941b26cfb5.gdx
---- GDX File ($gdxIn) C:\Users\Hii\AppData\Local\Temp\tmpmzw4b0ee\_gdx_in_96d4f46d-d3d6-4d0a-8c4a-ce941b26cfb5.gdx
---- _job_f4d90eca-aa60-431d-b27c-9c9f0385a696.gms(95) 3 Mb
+--- _job_598d1d7e-b95b-4244-aa6d-5747db53a13d.gms(3) 3 Mb
+--- GDXin=C:\Users\Hii\AppData\Local\Temp\tmplrjebrwa\_gdx_in_36acb2d0-c9f9-4ed9-bad7-4f7a265c0cd7.gdx
+--- GDX File ($gdxIn) C:\Users\Hii\AppData\Local\Temp\tmplrjebrwa\_gdx_in_36acb2d0-c9f9-4ed9-bad7-4f7a265c0cd7.gdx
+--- _job_598d1d7e-b95b-4244-aa6d-5747db53a13d.gms(95) 3 Mb
 --- Starting execution: elapsed 0:00:00.027
 --- Generating LP model myModel
---- _job_f4d90eca-aa60-431d-b27c-9c9f0385a696.gms(160) 4 Mb
+--- _job_598d1d7e-b95b-4244-aa6d-5747db53a13d.gms(160) 4 Mb
 ---   58 rows  32 columns  179 non-zeroes
 --- Range statistics (absolute non-zero finite values)
---- RHS       [min, max] : [ 3.000E+00, 2.500E+02] - Zero values observed as well
+--- RHS       [min, max] : [ 2.000E+00, 2.500E+02] - Zero values observed as well
 --- Bound     [min, max] : [        NA,        NA] - Zero values observed as well
---- Matrix    [min, max] : [ 1.000E+00, 6.500E+01]
---- Executing CPLEX (Solvelink=2): elapsed 0:00:00.034
+--- Matrix    [min, max] : [ 1.000E+00, 7.600E+01]
+--- Executing CPLEX (Solvelink=2): elapsed 0:00:00.033
 
 IBM ILOG CPLEX   45.3.0 c4c31d8a Nov 11, 2023          WEI x86 64bit/MS Window
 
@@ -73,11 +73,11 @@ Presolve time = 0.00 sec. (0.03 ticks)
 
 
 Optimal solution found
-Objective:      -179500.000000
+Objective:      -166000.000000
 
 --- Reading solution for model myModel
---- Executing after solve: elapsed 0:00:00.113
---- _job_f4d90eca-aa60-431d-b27c-9c9f0385a696.gms(251) 4 Mb
---- GDX File (execute_unload) C:\Users\Hii\AppData\Local\Temp\tmpmzw4b0ee\_gdx_out_96d4f46d-d3d6-4d0a-8c4a-ce941b26cfb5.gdx
+--- Executing after solve: elapsed 0:00:00.107
+--- _job_598d1d7e-b95b-4244-aa6d-5747db53a13d.gms(251) 4 Mb
+--- GDX File (execute_unload) C:\Users\Hii\AppData\Local\Temp\tmplrjebrwa\_gdx_out_36acb2d0-c9f9-4ed9-bad7-4f7a265c0cd7.gdx
 *** Status: Normal completion
---- Job _job_f4d90eca-aa60-431d-b27c-9c9f0385a696.gms Stop 11/30/23 00:42:04 elapsed 0:00:00.115
+--- Job _job_598d1d7e-b95b-4244-aa6d-5747db53a13d.gms Stop 11/30/23 01:00:01 elapsed 0:00:00.109
