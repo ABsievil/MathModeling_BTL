@@ -36,13 +36,13 @@ i = Set(container, "i", records= ["i" + str(i) for i in range(n)])
 j = Set(container, "j", records= ["j" + str(j) for j in range(m)])
 
 # Define records for parameters
-l_record = [["i"+ str(i), l_arr[i]] for i in range(n)]
-q_record = [["i"+ str(i), q_arr[i]] for i in range(n)]
-s_record = [["j"+ str(j), s_arr[j]] for j in range(m)]
-c_record = [["j"+ str(j), c_arr[j]] for j in range(m)]
-D_record1 = [["i"+ str(i), D_arr1[i]] for i in range(n)]
-D_record2 = [["i"+ str(i), D_arr2[i]] for i in range(n)]
-A_record = [["i"+ str(i), "j"+ str(j), A_arr[i][j]] for i in range(n) for j in range(m)]
+l_record = [["i" + str(i), l_arr[i]] for i in range(n)]
+q_record = [["i" + str(i), q_arr[i]] for i in range(n)]
+s_record = [["j" + str(j), s_arr[j]] for j in range(m)]
+c_record = [["j" + str(j), c_arr[j]] for j in range(m)]
+D_record1 = [["i" + str(i), D_arr1[i]] for i in range(n)]
+D_record2 = [["i" + str(i), D_arr2[i]] for i in range(n)]
+A_record = [["i" + str(i), "j" + str(j), A_arr[i][j]] for i in range(n) for j in range(m)]
 
 # Define parameters
 l = Parameter(container, "l", domain = [i], records = l_record)
