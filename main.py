@@ -1,4 +1,3 @@
-import sys
 import numpy as np
 from gamspy import Sum, Model, Container, Set, Parameter, Variable, Equation, Sense
 
@@ -7,22 +6,22 @@ n = 8
 m = 5
 S = 2
 ps = 1/2
-MAX_VALUE = 50
+MAX_VALUE = 10
 
 # Random values for vectors and matrices
 l_arr = np.random.randint(1, MAX_VALUE, n)
 s_arr = np.random.randint(1, MAX_VALUE, m)
-q_arr = l_arr + np.random.randint(1, MAX_VALUE, n)
-c_arr = s_arr + np.random.randint(1, MAX_VALUE, m)
+q_arr = l_arr + np.random.randint(1000* MAX_VALUE, 2000* MAX_VALUE, n)
+c_arr = s_arr + np.random.randint(10* MAX_VALUE, 20* MAX_VALUE, m)
 D_arr1 = np.random.binomial(10, 0.5, n)
 D_arr2 = np.random.binomial(10, 0.5, n)
-A_arr = np.random.randint(1, MAX_VALUE, size=(n, m))
+A_arr = np.random.randint(1, 10* MAX_VALUE, size=(n, m))
 
 # Print vectors and matrices
 print("Values of vectors and matrices:")
 print("l: ", l_arr)
-print("q: ", q_arr)
 print("s: ", s_arr)
+print("q: ", q_arr)
 print("c: ", c_arr)
 print("D1: ", D_arr1)
 print("D2: ", D_arr2)
@@ -74,7 +73,7 @@ y2_constraint = Equation(container, name = "y2_constraint", type="regular", doma
 z2_constraint = Equation(container, name = "z2_constraint", type="regular", domain = [i])
 
 # Build constraints for variables
-x_positive[j] = x[j] >=0 and x[j] <= 5*MAX_VALUE            # x[j] >=0 && x[j] <= 500
+x_positive[j] = x[j] >=0                                    # x[j] >=0 
 # Constraints for scenario 1
 y1_positive[j] = y1[j] >=0                                  # y1[j] >=0 
 z1_positive[i] = z1[i] >=0                                  # z1[i] >=0 
@@ -118,7 +117,3 @@ print("z1: ", list(map(int, z1.records['level'].values)))
 print("z2: ", list(map(int, z2.records['level'].values)))
 
 print("Objective Function Value: ", model.objective_value)
-
-# redirect output to a file
-with open("progress_build_model", "w") as file:
-    model.solve(output=file)
