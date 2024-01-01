@@ -1,3 +1,4 @@
+import sys
 import numpy as np
 from gamspy import Sum, Model, Container, Set, Parameter, Variable, Equation, Sense
 
@@ -117,3 +118,7 @@ print("z1: ", list(map(int, z1.records['level'].values)))
 print("z2: ", list(map(int, z2.records['level'].values)))
 
 print("Objective Function Value: ", model.objective_value)
+
+# redirect output to a file
+with open("progress_build_model", "w") as file:
+    model.solve(output=file)
