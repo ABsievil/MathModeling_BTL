@@ -1,0 +1,34 @@
+Phần trăm đóng góp của các thành viên: Nguyễn Cao Cường (20%), Lưu Lê Gia Bảo (20%), Hàng Nhựt Long (20%), Nguyễn Mạnh Hùng (20%), Mã Trường Vũ (20%).
+Tuần 1 : 
+	+ Họp lần 1, nhóm phân tích nội dung yêu cầu đề bài, tìm hiểu các vấn đề liên quan đến vấn đề 1.
+	+ Thiết lập bài toán và lựa chọn phương pháp giải bài toán vấn đề 1 (Bảo, Long, Hùng).
+	+ Tìm hiểu về python và các package của GAMSPy (Cường, Vũ).
+Tuần 2 : 
+	+ Họp lần 2, báo cáo về các vấn đề được giao và trao đổi, chỉnh sửa.
+	+ Tìm hiểu về những cú pháp cơ bản của python dùng để sử dụng giải bài toán (Cường, Vũ).
+	+ Tóm tắt, thiết lập bài toán (Bảo).
+	+ Đọc tài liệu tham khảo, hỗ trợ trao đổi ý kiến (Long, Hùng).	
+Tuần 3 :
+	+ Tìm hiểu cách cài đặt và sử dụng các package của GAMSPy trong Python để giải bài toán (Cường, Vũ).
+	+ Viết báo cáo phần tóm tắt bài toán (Bảo, Hùng).
+	+ Viết báo cáo phần mục tiêu bài toán (Long).
+Tuần 4 :
+	+ Họp lần 3, phân công nhiệm vụ cho vấn đề 2.
+	+ Đọc tài liệu tham khảo được cung cấp cho vấn đề 2 (Bảo, Long, Hùng).
+	+ Sử dụng các package của GAMSPy xây dựng các đại lượng và các phương trình để giải bài toán, hoàn thành phần sinh dữ liệu (Cường).
+	+ Viết báo cáo về phần sinh dữ liệu code (Vũ).
+Tuần 5 :
+	+ Viết tóm tắt bài toán vấn đề 2 (Bảo).
+	+ Tìm hiểu phân tích vấn đề thành bài toán 2 bước.
+	+ Hoàn thiện bài code vấn đề 1 (giải ra phương án tối ưu và giá trị hàm mục tiêu) (Cường).
+	+ Giải thích code (Vũ, Cường).
+	+ Xử lí bài toán (Long).
+	+ Chuyển về dạng bài toán Min-cost flow (Hùng).
+	+ Xây dựng mô hình và lựa chọn giải thuật cho mô hình (Bảo).
+Tuần 6 :
+ 	+ Ghi nhận, tổng hợp lại tiến trình của toàn bộ quá trình hoàn thành bài tập lớn (Vũ).
+	+ Viết báo cáo và cung cấp hình ảnh về code (Vũ).
+	+ Chạy code và ghi nhận kết quả (Cường).
+	+ Viết báo cáo cho vấn đề 2 (Bảo, Long, Hùng).
+	+ Chỉnh sửa, hiệu chỉnh bài báo cáo.
+

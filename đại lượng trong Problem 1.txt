@@ -1,0 +1,6 @@
+c giá mua 1 loại component
+l giá sản xuất 1 sp
+q giá bán 1 sp
+x số lượng 1 loại component cần mua
+y số component dư thừa
+z số unit sản phẩm sản xuất ra
